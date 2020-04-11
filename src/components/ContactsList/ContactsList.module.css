@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Monoton&display=swap');
+
+.itemsList {
+  padding: 0;
+  margin: 0 auto;
+  width: 280px;
+  -webkit-box-shadow: -1px 2px 24px -5px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: -1px 2px 24px -5px rgba(0, 0, 0, 0.81);
+  box-shadow: -1px 2px 24px -5px rgba(0, 0, 0, 0.81);
+  padding: 10px 10px;
+}
+
+.item {
+  background-color: white;
+  padding: 5px;
+  border: 2px solid black;
+
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item:not(:last-child) {
+  margin-bottom: 10px;
+}

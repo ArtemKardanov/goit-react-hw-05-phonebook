@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Monoton&display=swap');
+
+.form {
+  width: 280px;
+  margin: auto;
+  padding: 10px 10px;
+  -webkit-box-shadow: -1px 2px 24px -5px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: -1px 2px 24px -5px rgba(0, 0, 0, 0.81);
+  box-shadow: -1px 2px 24px -5px rgba(0, 0, 0, 0.81);
+
+  margin-bottom: 20px;
+}
+
+.name {
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  font-size: 24px;
+  margin: 0;
+  color: rgba(47, 106, 114, 0.733);
+}
+
+.input {
+  width: calc(100% - 6px);
+  height: 24px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+.input:focus {
+  border: 2px solid rgb(0, 219, 117);
+}
+
+.button {
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  font-size: 20px;
+  width: 100%;
+  padding: 0;
+  height: 30px;
+  background-image: linear-gradient(to bottom right, yellow, purple);
+}
+
+.button:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Monoton&display=swap');
+
+.title {
+  font-family: 'Monoton', cursive;
+  font-weight: 400;
+  font-size: 44px;
+  margin: auto;
+}
