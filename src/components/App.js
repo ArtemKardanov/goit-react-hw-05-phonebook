@@ -16,7 +16,11 @@ const filterContactsByQuery = (filter, contacts) => {
 };
 
 export default class App extends Component {
-  state = { contacts: [], filter: '' };
+  state = { contacts: [], filter: '', isShowTitle: false };
+
+  componentDidMount = () => {
+    this.setState({ isShowTitle: true });
+  };
 
   onAddContact = contact => {
     const { name } = contact;
@@ -58,10 +62,10 @@ export default class App extends Component {
     return (
       <div className={styles.wrapper}>
         <CSSTransition
-          in
+          in={this.state.isShowTitle}
           unmountOnExit
-          timeout={200}
-          classNames={popTransition}
+          timeout={500}
+          classNames={slideTransition}
         >
           <Title title="Phonebook" />
         </CSSTransition>
@@ -69,7 +73,7 @@ export default class App extends Component {
         <Form onAddContact={this.onAddContact} />
         <CSSTransition
           in={isFilterOpen}
-          timeout={200}
+          timeout={250}
           unmountOnExit
           classNames={popTransition}
         >
@@ -82,9 +86,9 @@ export default class App extends Component {
 
         <CSSTransition
           in={isListOpen}
-          timeout={200}
+          timeout={250}
           unmountOnExit
-          classNames={slideTransition}
+          classNames={popTransition}
         >
           <ContactsList
             contacts={filteredContacts}

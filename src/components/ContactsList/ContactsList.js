@@ -2,7 +2,7 @@ import React from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styles from './ContactsList.module.css';
 import Contact from '../Contact/Contact';
-import slideTransition from '../../transitions/slide.module.css';
+import popTransition from '../../transitions/pop.module.css';
 
 const ContactsList = ({ contacts, onDeleteNumber }) => {
   return (
@@ -11,7 +11,7 @@ const ContactsList = ({ contacts, onDeleteNumber }) => {
         <CSSTransition
           key={contact.id}
           timeout={200}
-          classNames={slideTransition}
+          classNames={popTransition}
           unmountOnExit
         >
           <li className={styles.item}>
