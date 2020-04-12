@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import popTransition from '../transitions/pop.module.css';
+import titleSlide from '../transitions/titleSlide.module.css';
+
 import shortid from 'shortid';
 import styles from './App.module.css';
 import ContactsList from './ContactsList/ContactsList';
 import Filter from './Filter/Filter';
 import Form from './Form/Form';
 import Title from './Title/Title';
-import { CSSTransition } from 'react-transition-group';
-import slideTransition from '../transitions/slide.module.css';
-import popTransition from '../transitions/pop.module.css';
+import Alert from './Alert/Alert';
 
 const filterContactsByQuery = (filter, contacts) => {
   return contacts.filter(contact =>
@@ -16,11 +18,7 @@ const filterContactsByQuery = (filter, contacts) => {
 };
 
 export default class App extends Component {
-  state = { contacts: [], filter: '', isShowTitle: false };
-
-  componentDidMount = () => {
-    this.setState({ isShowTitle: true });
-  };
+  state = { contacts: [], filter: '', showMessags: false };
 
   onAddContact = contact => {
     const { name } = contact;
@@ -30,7 +28,12 @@ export default class App extends Component {
     const nameExist = contactsArray.find(con => con['name'] === name);
 
     if (nameExist) {
-      alert(`${name} is already exist`);
+      this.setState({ showMessage: true });
+
+      setTimeout(() => {
+        this.setState({ showMessage: false });
+      }, 2000);
+
       return;
     }
 
@@ -55,19 +58,24 @@ export default class App extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { contacts, filter, showMessage } = this.state;
     const isFilterOpen = contacts.length >= 2 ? true : false;
     const isListOpen = contacts.length > 0 ? true : false;
+
     const filteredContacts = filterContactsByQuery(filter, contacts);
     return (
       <div className={styles.wrapper}>
-        <CSSTransition
-          in={this.state.isShowTitle}
-          unmountOnExit
-          timeout={500}
-          classNames={slideTransition}
-        >
+        <CSSTransition in appear timeout={500} classNames={titleSlide}>
           <Title title="Phonebook" />
+        </CSSTransition>
+
+        <CSSTransition
+          classNames={popTransition}
+          in={showMessage}
+          unmountOnExit
+          timeout={250}
+        >
+          <Alert />
         </CSSTransition>
 
         <Form onAddContact={this.onAddContact} />
